@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
  
 namespace TopDownShooter
 {
@@ -16,6 +13,8 @@ namespace TopDownShooter
 
         private Camera _mainCamera;
 
+        private Vector2 _currentMousePosition;
+
         private void Awake()
         {
             _movement = GetComponent<Movement>();
@@ -25,9 +24,11 @@ namespace TopDownShooter
             _mainCamera = Camera.main;
         }
 
-        private void ConvertMouseToWorldPoint(InputAction.CallbackContext ctx)
+        private void Update() => ConvertMouseToWorldPoint(_currentMousePosition);
+
+        private void ConvertMouseToWorldPoint(Vector2 mousePosition)
         {
-            var worldPosition = _mainCamera.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+            var worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
             worldPosition.z = 0f;
             _aim.SetAimDirection(worldPosition);
         }
@@ -40,7 +41,7 @@ namespace TopDownShooter
 
                 _controls.Gameplay.Move.performed += _movement.SetCurrentDirection;
 
-                _controls.Gameplay.Aim.performed += ConvertMouseToWorldPoint;
+                _controls.Gameplay.Aim.performed += ctx => _currentMousePosition = ctx.ReadValue<Vector2>();
 
                 _controls.Gameplay.Shoot.performed += _shoot.SetShootBool;
                 _controls.Gameplay.Shoot.canceled += _shoot.SetShootBool;
@@ -53,7 +54,7 @@ namespace TopDownShooter
         {
             _controls.Gameplay.Move.performed -= _movement.SetCurrentDirection;
 
-            _controls.Gameplay.Aim.performed -= ConvertMouseToWorldPoint;
+            _controls.Gameplay.Aim.performed -= ctx => _currentMousePosition = ctx.ReadValue<Vector2>();
 
             _controls.Gameplay.Shoot.performed -= _shoot.SetShootBool;
             _controls.Gameplay.Shoot.canceled -= _shoot.SetShootBool;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +11,8 @@ namespace TopDownShooter
         [Header("Settings")]
         [SerializeField, Range(0f, 10f)] private float moveSpeed = 3f;
         [SerializeField, Range(0f, 15f)] private float maxSpeed = 10f;
-        [SerializeField, Range(0f, 10f)] private float posAccel = 5f;
-        [SerializeField, Range(0f, 10f)] private float negAccel = 10f;
+        [SerializeField, Range(0f, 20f)] private float posAccel = 5f;
+        [SerializeField, Range(0f, 20f)] private float negAccel = 10f;
 
         private Rigidbody2D _rigidbody;
         private Vector2 _currentDirection;
