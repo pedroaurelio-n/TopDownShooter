@@ -8,7 +8,7 @@ namespace TopDownShooter
 
         [Header("Settings")]
         [SerializeField] private bool startFacingDirection;
-        [SerializeField, Range(100f, 1500f)] private float rotationSpeed = 500f;
+        [SerializeField, Range(50f, 1500f)] private float rotationSpeed = 500f;
 
         private Transform _targetReference;
 

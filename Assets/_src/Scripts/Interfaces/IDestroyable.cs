@@ -4,8 +4,8 @@ using UnityEngine;
  
 namespace TopDownShooter
 {
-    public class #SCRIPTNAME# : MonoBehaviour
+    public interface IDestroyable
     {
-        #NOTRIM#
+        void Destroy();
     }
 }

@@ -4,7 +4,7 @@ namespace TopDownShooter
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Health))]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IDestroyable
     {
         [SerializeField] private Transform shootPos;
         private Animator _animator;
@@ -19,6 +19,11 @@ namespace TopDownShooter
 
             _movement = GetComponent<Movement>();
             _aim = GetComponent<Aim>();
+        }
+
+        public void Destroy()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

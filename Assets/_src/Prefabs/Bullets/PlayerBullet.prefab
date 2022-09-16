@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.52156866, g: 0.78823537, b: 0.6862745, a: 1}
+  m_Color: {r: 0.9450981, g: 0.95294124, b: 0.7803922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1153260764010522319}
   - component: {fileID: 1153260764010522316}
+  - component: {fileID: 1980634825189216204}
   - component: {fileID: 1153260764010522317}
   - component: {fileID: 410934516}
   m_Layer: 8
@@ -132,6 +133,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  collideWithEnemyBullets: 0
+--- !u!114 &1980634825189216204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153260764010522307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82207391d15ce34468e431509ae886d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
 --- !u!50 &1153260764010522317
 Rigidbody2D:
   serializedVersion: 4

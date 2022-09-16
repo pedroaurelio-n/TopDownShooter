@@ -3,7 +3,7 @@ using UnityEngine;
 namespace TopDownShooter
 {
     [RequireComponent(typeof(Health))]
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour, IDestroyable
     {
         private Animator _animator;
 
@@ -18,6 +18,11 @@ namespace TopDownShooter
             TryGetComponent<Movement>(out _Movement);
             TryGetComponent<Aim>(out _Aim);
             _Shoot = GetComponentInChildren<ShootBullets>();
+        }
+
+        public void Destroy()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

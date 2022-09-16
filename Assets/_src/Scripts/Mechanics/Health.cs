@@ -21,12 +21,22 @@ namespace TopDownShooter
 
         private float _currentHealth;
 
-        private void Awake() => _currentHealth = maxHealth;
+        private IDestroyable _destroyable;
+
+        private void Awake()
+        {
+            Initialize();
+            
+            if (!TryGetComponent<IDestroyable>(out _destroyable))
+                Debug.LogWarning($"Object with health doesn't have IDestroyable");
+        }
+
+        public void Initialize() => _currentHealth = maxHealth;
 
         private void Die()
         {
             _currentHealth = 0f;
-            gameObject.SetActive(false);
+            _destroyable.Destroy();
         }
     }
 }
