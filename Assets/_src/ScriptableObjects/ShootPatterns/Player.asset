@@ -18,9 +18,9 @@ MonoBehaviour:
   SideCount: 1
   AngleOpening: 0
   AngleOffset: 0
-  MissRate: 0.3
+  MissRate: 0.24
   MissAngleOpening: 30
   NeedInput: 1
   IsAiming: 1
   BulletSpeed: 8
-  FireRate: 0.1
+  FireRate: 0.14
