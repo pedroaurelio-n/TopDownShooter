@@ -33,6 +33,12 @@ namespace TopDownShooter
                 _rotation.z = initialRotation;
         }
 
+        private void Start()
+        {
+            if (dynamic == null)
+                dynamic = LevelDependencies.Dynamic;
+        }
+
         #region Pooling Methods
         private Bullet OnCreateBullet()
         {

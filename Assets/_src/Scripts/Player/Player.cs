@@ -6,9 +6,7 @@ namespace TopDownShooter
     [RequireComponent(typeof(Health))]
     public class Player : MonoBehaviour, IDestroyable
     {
-        [SerializeField] private Transform shootPos;
         private Animator _animator;
-        private SpriteRenderer _sprite;
 
         private Movement _movement;
         private Aim _aim;

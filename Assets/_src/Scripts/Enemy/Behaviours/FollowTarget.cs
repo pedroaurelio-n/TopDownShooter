@@ -9,11 +9,16 @@ namespace TopDownShooter
         [Header("Dependencies")]
         [SerializeField] private Transform target;
 
-        private void Update()
+        private void Start()
         {
             if (target == null)
-                return;
+                target = LevelDependencies.Player.transform;
                 
+            _Aim.SetAimDirection(target);
+        }
+
+        private void Update()
+        {
             _Aim.SetAimDirection(target);
             _Movement.SetCurrentDirection(_Aim.LookDirection);
         }
