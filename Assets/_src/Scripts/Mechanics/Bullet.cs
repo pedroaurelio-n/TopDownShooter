@@ -9,6 +9,7 @@ namespace TopDownShooter
     {
         [Header("Settings")]
         [SerializeField] private float damage;
+        [SerializeField] private float knockbackForce;
         [SerializeField] private bool collideWithEnemyBullets;
 
         private Rigidbody2D _rigidbody;
@@ -39,8 +40,14 @@ namespace TopDownShooter
         {
             if (other.TryGetComponent<Health>(out Health target))
             {
-                if (!collideWithEnemyBullets && target.TryGetComponent<Bullet>(out Bullet bullet))
+                if (!collideWithEnemyBullets && target.TryGetComponent<Bullet>(out Bullet targetBullet))
                     return;
+
+                if (target.TryGetComponent<Movement>(out Movement targetMovement))
+                {
+                    var direction = targetMovement.transform.position - transform.position;
+                    targetMovement.ApplyKnockback(direction, knockbackForce);
+                }
                 
                 target.HealthValue -= damage;
                 _health.HealthValue -= 1f;

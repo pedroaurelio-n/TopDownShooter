@@ -6,6 +6,10 @@ namespace TopDownShooter
     [RequireComponent(typeof(Health))]
     public class Player : MonoBehaviour, IDestroyable
     {
+        public Health Health { get; private set; }
+
+        [SerializeField] private float collisionKnockback;
+
         private Animator _animator;
 
         private Movement _movement;
@@ -13,6 +17,8 @@ namespace TopDownShooter
 
         private void Awake()
         {
+            Health = GetComponent<Health>();
+
             _animator = GetComponentInChildren<Animator>();
 
             _movement = GetComponent<Movement>();
@@ -22,6 +28,18 @@ namespace TopDownShooter
         public void Destroy()
         {
             gameObject.SetActive(false);
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+            {
+                var direction = transform.position - enemy.transform.position;
+                _movement.ApplyKnockback(direction, collisionKnockback);
+
+                Health.HealthValue--;
+                enemy.Destroy();
+            }
         }
     }
 }

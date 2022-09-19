@@ -8,11 +8,14 @@ namespace TopDownShooter
     {
         public bool IsMoving { get; private set; }
 
-        [Header("Settings")]
+        [Header("Move Settings")]
         [SerializeField, Range(0f, 10f)] private float moveSpeed = 3f;
         [SerializeField, Range(0f, 15f)] private float maxSpeed = 10f;
         [SerializeField, Range(0f, 20f)] private float posAccel = 5f;
         [SerializeField, Range(0f, 20f)] private float negAccel = 10f;
+
+        [Header("Knockback Settings")]
+        [SerializeField, Range(0f, 3f)] private float knockbackMultiplier = 1f;
 
         private Rigidbody2D _rigidbody;
         private Vector2 _currentDirection;
@@ -42,6 +45,11 @@ namespace TopDownShooter
 
             var clampedVelocity = Vector2.ClampMagnitude(_rigidbody.velocity, maxSpeed);
             _rigidbody.velocity = clampedVelocity;
+        }
+
+        public void ApplyKnockback(Vector2 direction, float force)
+        {
+            _rigidbody.AddForce(knockbackMultiplier * force * direction.normalized, ForceMode2D.Impulse);
         }
 
         public void SetCurrentDirection(Vector2 direction) => _currentDirection = direction.normalized;

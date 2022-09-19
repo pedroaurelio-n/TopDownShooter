@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  knockbackForce: 5
   collideWithEnemyBullets: 0
 --- !u!114 &1980634825189216204
 MonoBehaviour:

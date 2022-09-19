@@ -3910,9 +3910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '000
-
-'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4536,7 +4534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: XXXXXXX
+  m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10200,6 +10198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff57f6fc4f23424798cc2a5fc483b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionKnockback: 5
 --- !u!114 &1934155037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10256,6 +10255,7 @@ MonoBehaviour:
   maxSpeed: 5
   posAccel: 10
   negAccel: 20
+  knockbackMultiplier: 1
 --- !u!50 &1934155041
 Rigidbody2D:
   serializedVersion: 4
