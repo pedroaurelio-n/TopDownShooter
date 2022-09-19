@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0be5390da8f4e438f46c4c16423aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDefeatedEvent: {fileID: 11400000, guid: 30644d7d4ba08ad4f9ebf63642a8a2e6, type: 2}
+  defeatScore: 50
   target: {fileID: 0}
 --- !u!114 &8672030640356770497
 MonoBehaviour:
@@ -93,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82207391d15ce34468e431509ae886d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  healthModifiedEvent: {fileID: 0}
+  startHealth: 4
 --- !u!50 &8672030640356770502
 Rigidbody2D:
   serializedVersion: 4

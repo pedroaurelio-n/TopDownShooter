@@ -5,6 +5,9 @@ namespace TopDownShooter
     [RequireComponent(typeof(Health))]
     public abstract class Enemy : MonoBehaviour, IDestroyable
     {
+        [SerializeField] private IntEvent enemyDefeatedEvent;
+        [SerializeField] private int defeatScore;
+
         private Animator _animator;
 
         protected Movement _Movement;
@@ -22,6 +25,7 @@ namespace TopDownShooter
 
         public void Destroy()
         {
+            enemyDefeatedEvent?.RaiseEvent(defeatScore);
             gameObject.SetActive(false);
         }
     }

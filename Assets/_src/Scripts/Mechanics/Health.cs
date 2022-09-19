@@ -11,13 +11,16 @@ namespace TopDownShooter
             {
                 _currentHealth = value;
 
+                healthModifiedEvent?.RaiseEvent((int)_currentHealth);
+
                 if (_currentHealth <= 0f)
                     Die();
             }
         }
 
         [Header("Settings")]
-        [SerializeField] private float maxHealth = 100f;
+        [SerializeField] private IntEvent healthModifiedEvent;
+        [SerializeField] private float startHealth = 5f;
 
         private float _currentHealth;
 
@@ -31,7 +34,11 @@ namespace TopDownShooter
                 Debug.LogWarning($"Object with health doesn't have IDestroyable");
         }
 
-        public void Initialize() => _currentHealth = maxHealth;
+        public void Initialize()
+        {
+            _currentHealth = startHealth;
+            healthModifiedEvent?.RaiseEvent((int)_currentHealth);
+        }
 
         private void Die()
         {
