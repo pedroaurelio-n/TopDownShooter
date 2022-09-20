@@ -28,11 +28,11 @@ namespace TopDownShooter
 
         private void Awake()
         {
-            Initialize();
-            
             if (!TryGetComponent<IDestroyable>(out _destroyable))
                 Debug.LogWarning($"Object with health doesn't have IDestroyable");
         }
+
+        private void Start() => Initialize();
 
         public void Initialize()
         {

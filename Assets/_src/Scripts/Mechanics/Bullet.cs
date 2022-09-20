@@ -61,7 +61,8 @@ namespace TopDownShooter
         {
             if (_isActiveOnPool)
             {
-                _pool.Release(this);
+                // _pool.Release(this);
+                Destroy(gameObject);
                 _isActiveOnPool = false;
             }
         }

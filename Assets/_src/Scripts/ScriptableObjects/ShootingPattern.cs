@@ -8,6 +8,9 @@ namespace TopDownShooter
         [Header("Dependencies")]
         public Bullet BulletPrefab;
 
+        [Header("Ammo Settings")]
+        public int MaxAmmo;
+
         [Header("Spawn Settings")]
         public float StartDelay;
         public float SpinRate;
