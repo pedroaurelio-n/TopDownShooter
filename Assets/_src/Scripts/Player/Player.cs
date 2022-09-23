@@ -7,6 +7,7 @@ namespace TopDownShooter
     public class Player : MonoBehaviour, IDestroyable
     {
         public Health Health { get; private set; }
+        public ShootBullets Shoot { get; private set; }
 
         [SerializeField] private float collisionKnockback;
 
@@ -18,6 +19,7 @@ namespace TopDownShooter
         private void Awake()
         {
             Health = GetComponent<Health>();
+            Shoot = GetComponentInChildren<ShootBullets>();
 
             _animator = GetComponentInChildren<Animator>();
 
@@ -37,7 +39,7 @@ namespace TopDownShooter
                 var direction = transform.position - enemy.transform.position;
                 _movement.ApplyKnockback(direction, collisionKnockback);
 
-                Health.HealthValue--;
+                Health.ModifyHealth(-1f);
                 enemy.Destroy();
             }
         }

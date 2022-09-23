@@ -4,20 +4,6 @@ namespace TopDownShooter
 {
     public class Health : MonoBehaviour
     {
-        public float HealthValue
-        {
-            get => _currentHealth;
-            set
-            {
-                _currentHealth = value;
-
-                healthModifiedEvent?.RaiseEvent((int)_currentHealth);
-
-                if (_currentHealth <= 0f)
-                    Die();
-            }
-        }
-
         [Header("Settings")]
         [SerializeField] private IntEvent healthModifiedEvent;
         [SerializeField] private float startHealth = 5f;
@@ -38,6 +24,16 @@ namespace TopDownShooter
         {
             _currentHealth = startHealth;
             healthModifiedEvent?.RaiseEvent((int)_currentHealth);
+        }
+
+        public void ModifyHealth(float value)
+        {
+            _currentHealth += value;
+
+            healthModifiedEvent?.RaiseEvent((int)_currentHealth);
+
+            if (_currentHealth <= 0f)
+                Die();
         }
 
         private void Die()

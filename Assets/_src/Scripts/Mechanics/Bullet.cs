@@ -49,12 +49,12 @@ namespace TopDownShooter
                     targetMovement.ApplyKnockback(direction, knockbackForce);
                 }
                 
-                target.HealthValue -= damage;
-                _health.HealthValue -= 1f;
+                target.ModifyHealth(-damage);
+                _health.ModifyHealth(-1f);
                 return;
             }
 
-            _health.HealthValue -= Mathf.Infinity;
+            _health.ModifyHealth(Mathf.NegativeInfinity);
         }
 
         public void Destroy()

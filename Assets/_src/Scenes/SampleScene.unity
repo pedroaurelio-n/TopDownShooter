@@ -4904,7 +4904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8672030640356770498, guid: 70406ca7b27f9854688fd1f1e35d6f00, type: 3}
-  spawnCount: {x: 1, y: 3}
+  spawnCount: {x: 2, y: 4}
   spawnTime: 3
 --- !u!1 &1320170143
 GameObject:
@@ -10567,7 +10567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthModifiedEvent: {fileID: 11400000, guid: 6086b4b9b6688b54d8c510d56b6614a6, type: 2}
-  startHealth: 5
+  startHealth: 3
 --- !u!114 &1934155038
 MonoBehaviour:
   m_ObjectHideFlags: 0

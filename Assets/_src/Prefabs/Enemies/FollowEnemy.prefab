@@ -52,6 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDefeatedEvent: {fileID: 11400000, guid: 30644d7d4ba08ad4f9ebf63642a8a2e6, type: 2}
   defeatScore: 50
+  collectablePrefabs:
+  - {fileID: 9030560819137138348, guid: 657368270c0a9a643bf2169f793c83f8, type: 3}
+  - {fileID: 2596256545928782627, guid: 249ba15db55695a4fbc184147a29e70e, type: 3}
   target: {fileID: 0}
 --- !u!114 &8672030640356770497
 MonoBehaviour:
@@ -65,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43e21ef98a2d414b9174731deea756d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.8
-  maxSpeed: 1.1
+  moveSpeed: 0.9
+  maxSpeed: 1.2
   posAccel: 10
   negAccel: 0
   knockbackMultiplier: 1
