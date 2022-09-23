@@ -13,7 +13,7 @@ namespace TopDownShooter
             if (other.TryGetComponent<Player>(out Player player))
             {
                 CollectAction(player);
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
 

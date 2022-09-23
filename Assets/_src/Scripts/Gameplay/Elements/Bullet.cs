@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
  
@@ -15,8 +16,8 @@ namespace TopDownShooter
         private Rigidbody2D _rigidbody;
         private Health _health;
 
-        private IObjectPool<Bullet> _pool;
-        private bool _isActiveOnPool;
+        // private IObjectPool<Bullet> _pool;
+        // private bool _isActiveOnPool;
 
         private void Awake()
         {
@@ -24,11 +25,11 @@ namespace TopDownShooter
             _health = GetComponent<Health>();
         }
 
-        public void SetPool(IObjectPool<Bullet> pool) => _pool = pool;
+        // public void SetPool(IObjectPool<Bullet> pool) => _pool = pool;
 
         public void Initialize(Vector3 position, Vector3 rotation, float speed)
         {
-            _isActiveOnPool = true;
+            // _isActiveOnPool = true;
             _health.Initialize();
 
             transform.position = position;
@@ -59,12 +60,13 @@ namespace TopDownShooter
 
         public void Destroy()
         {
-            if (_isActiveOnPool)
-            {
-                // _pool.Release(this);
-                Destroy(gameObject);
-                _isActiveOnPool = false;
-            }
+            ParticlesManager.Instance.CreatePlayerBulletParticles(transform.position, transform.rotation);
+            Destroy(gameObject);
+            // if (_isActiveOnPool)
+            // {
+            //     _pool.Release(this);
+            //     _isActiveOnPool = false;
+            // }
         }
     }
 }
