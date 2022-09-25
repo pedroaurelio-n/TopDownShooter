@@ -20,6 +20,12 @@ namespace TopDownShooter
                 _enemies.Remove(enemy);
         }
 
+        public void DeactivateEnemies()
+        {
+            foreach (Enemy enemy in _enemies)
+                enemy.DisableMovement();
+        }
+
         private void OnEnable()
         {
             Enemy.onEnemySpawned += AddActiveEnemy;

@@ -37,6 +37,12 @@ namespace TopDownShooter
 
         protected virtual void Start() => onEnemySpawned?.Invoke(this);
 
+        public void DisableMovement()
+        {
+            _Movement.StopMovement();
+            _Movement.enabled = false;
+        }
+
         public void Destroy()
         {
             CheckForDrop();

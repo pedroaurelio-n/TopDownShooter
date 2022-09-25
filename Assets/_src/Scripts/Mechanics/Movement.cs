@@ -52,6 +52,8 @@ namespace TopDownShooter
             _rigidbody.AddForce(knockbackMultiplier * force * direction.normalized, ForceMode2D.Impulse);
         }
 
+        public void StopMovement() => _rigidbody.velocity = Vector2.zero;
+
         public void SetCurrentDirection(Vector2 direction) => _currentDirection = direction.normalized;
 
         public void SetCurrentDirection(InputAction.CallbackContext ctx) => SetCurrentDirection(ctx.ReadValue<Vector2>());

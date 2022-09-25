@@ -12,10 +12,12 @@ namespace TopDownShooter
         [SerializeField] private float spawnTime;
 
         private List<SpawnCell> _activeSpawnCells = new List<SpawnCell>();
+
+        private Coroutine _spawnCoroutine;
         
         private void Start()
         {
-            StartCoroutine(SpawnCoroutine());
+            _spawnCoroutine = StartCoroutine(SpawnCoroutine());
         }
 
         private IEnumerator SpawnCoroutine()
@@ -32,6 +34,8 @@ namespace TopDownShooter
                 }
             }
         }
+
+        public void StopSpawnCoroutine() => StopCoroutine(_spawnCoroutine);
 
         public void AddActiveSpawnCell(SpawnCell cell)
         {

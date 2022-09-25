@@ -2886,6 +2886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233278479}
   - component: {fileID: 233278478}
+  - component: {fileID: 233278480}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -2920,6 +2921,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &233278480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233278477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5906037df47fe5241a1cc5f675ac5397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 17d5b7e0164eee74fa8bd9e88e586cb8, type: 2}
+  delay: 0
+  isOneShot: 0
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 233278478}
+        m_TargetAssemblyTypeName: TopDownShooter.ActiveEnemies, Assembly-CSharp
+        m_MethodName: DeactivateEnemies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &238479708
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,6 +4780,7 @@ GameObject:
   - component: {fileID: 1307196012}
   - component: {fileID: 1307196013}
   - component: {fileID: 1307196011}
+  - component: {fileID: 1307196014}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -4814,6 +4846,36 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8672030640356770498, guid: 70406ca7b27f9854688fd1f1e35d6f00, type: 3}
   spawnCount: {x: 2, y: 4}
   spawnTime: 3.5
+--- !u!114 &1307196014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307196010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5906037df47fe5241a1cc5f675ac5397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 17d5b7e0164eee74fa8bd9e88e586cb8, type: 2}
+  delay: 0
+  isOneShot: 0
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1307196013}
+        m_TargetAssemblyTypeName: TopDownShooter.EnemySpawner, Assembly-CSharp
+        m_MethodName: StopSpawnCoroutine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1338235177
 GameObject:
   m_ObjectHideFlags: 0
@@ -10609,6 +10671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff57f6fc4f23424798cc2a5fc483b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEvent: {fileID: 11400000, guid: 17d5b7e0164eee74fa8bd9e88e586cb8, type: 2}
   collisionKnockback: 5
 --- !u!114 &1934155037
 MonoBehaviour:
