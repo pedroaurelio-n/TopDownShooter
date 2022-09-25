@@ -7,8 +7,14 @@ namespace TopDownShooter
     [RequireComponent(typeof(Health))]
     public abstract class Enemy : MonoBehaviour, IDestroyable
     {
+        public delegate void EnemySpawned(Enemy enemy);
+        public static event EnemySpawned onEnemySpawned;
+
+        public delegate void EnemyDefeated(Enemy enemy);
+        public static event EnemyDefeated onEnemyDefeated;
+
         [Header("Score Settings")]
-        [SerializeField] private IntEvent enemyDefeatedEvent;
+        [SerializeField] private IntEvent enemyScoreEvent;
         [SerializeField] private int defeatScore;
 
         [Header("Drop Settings")]
@@ -29,12 +35,15 @@ namespace TopDownShooter
             _Shoot = GetComponentInChildren<ShootBullets>();
         }
 
+        protected virtual void Start() => onEnemySpawned?.Invoke(this);
+
         public void Destroy()
         {
             CheckForDrop();
             
-            enemyDefeatedEvent?.RaiseEvent(defeatScore);
-            gameObject.SetActive(false);
+            enemyScoreEvent?.RaiseEvent(defeatScore);
+            onEnemyDefeated?.Invoke(this);
+            Destroy(gameObject);
         }
 
         private void CheckForDrop()

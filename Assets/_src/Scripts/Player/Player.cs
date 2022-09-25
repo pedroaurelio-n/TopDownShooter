@@ -9,6 +9,7 @@ namespace TopDownShooter
         public Health Health { get; private set; }
         public ShootBullets Shoot { get; private set; }
 
+        [SerializeField] private GameEvent deathEvent;
         [SerializeField] private float collisionKnockback;
 
         private Animator _animator;
@@ -29,6 +30,7 @@ namespace TopDownShooter
 
         public void Destroy()
         {
+            deathEvent?.RaiseEvent();
             gameObject.SetActive(false);
         }
 

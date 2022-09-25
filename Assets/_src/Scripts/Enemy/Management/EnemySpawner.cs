@@ -12,8 +12,8 @@ namespace TopDownShooter
         [SerializeField] private float spawnTime;
 
         private List<SpawnCell> _activeSpawnCells = new List<SpawnCell>();
-
-        private void Awake()
+        
+        private void Start()
         {
             StartCoroutine(SpawnCoroutine());
         }
@@ -27,8 +27,8 @@ namespace TopDownShooter
                 var enemiesToSpawn = Random.Range((int)spawnCount.x, (int)spawnCount.y + 1);
                 for (int i = 0; i < enemiesToSpawn; i++)
                 {
-                    var randomCell = _activeSpawnCells[Random.Range(0, _activeSpawnCells.Count - 1)];
-                    var enemy = Instantiate(enemyPrefab, randomCell.transform.position, Quaternion.identity);
+                    var randomCell = _activeSpawnCells[Random.Range(0, _activeSpawnCells.Count)];
+                    var enemy = Instantiate(enemyPrefab, randomCell.RandomPositionInsideBounds(), Quaternion.identity, LevelDependencies.Dynamic);
                 }
             }
         }

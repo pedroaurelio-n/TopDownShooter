@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120b6a7605c0ab4dba6277899fa9b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnZoneDecrease: {x: 1, y: 1}
 --- !u!61 &4107749472898325682
 BoxCollider2D:
   m_ObjectHideFlags: 0
