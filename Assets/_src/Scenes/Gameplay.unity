@@ -10861,7 +10861,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2111135196}
   - component: {fileID: 2111135197}
-  - component: {fileID: 2111135198}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -10901,19 +10900,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1934155036}
   dynamic: {fileID: 1042800286}
---- !u!114 &2111135198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111135195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53ca91da5c0d4254581efaadf1b7c7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pBullet: {fileID: -5070353976004296911, guid: f1b4aa0d8df7892499b97de232966b40, type: 3}
-  pDamage: {fileID: -5070353976004296911, guid: f1b4aa0d8df7892499b97de232966b40, type: 3}
-  eDamage: {fileID: -5070353976004296911, guid: f1b4aa0d8df7892499b97de232966b40, type: 3}
-  eDeath: {fileID: -5070353976004296911, guid: f1b4aa0d8df7892499b97de232966b40, type: 3}

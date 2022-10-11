@@ -12,6 +12,7 @@ namespace TopDownShooter
         [SerializeField] private float damage;
         [SerializeField] private float knockbackForce;
         [SerializeField] private bool collideWithEnemyBullets;
+        [SerializeField] private GameObject collisionParticles;
 
         private Rigidbody2D _rigidbody;
         private Health _health;
@@ -60,7 +61,8 @@ namespace TopDownShooter
 
         public void Destroy()
         {
-            ParticlesManager.Instance.CreatePlayerBulletParticles(transform.position, transform.rotation);
+            collisionParticles.SetActive(true);
+            collisionParticles.transform.SetParent(LevelDependencies.Dynamic);
             Destroy(gameObject);
             // if (_isActiveOnPool)
             // {

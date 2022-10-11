@@ -13,9 +13,10 @@ namespace TopDownShooter
         public delegate void EnemyDefeated(Enemy enemy);
         public static event EnemyDefeated onEnemyDefeated;
 
-        [Header("Score Settings")]
+        [Header("Defeat Settings")]
         [SerializeField] private IntEvent enemyScoreEvent;
         [SerializeField] private int defeatScore;
+        [SerializeField] private GameObject deathParticles;
 
         [Header("Drop Settings")]
         [SerializeField] private List<Collectable> collectablePrefabs;
@@ -46,6 +47,9 @@ namespace TopDownShooter
         public void Destroy()
         {
             CheckForDrop();
+
+            deathParticles.SetActive(true);
+            deathParticles.transform.SetParent(LevelDependencies.Dynamic);
             
             enemyScoreEvent?.RaiseEvent(defeatScore);
             onEnemyDefeated?.Invoke(this);
