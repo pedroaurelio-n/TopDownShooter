@@ -4,25 +4,36 @@ namespace TopDownShooter
 {
     [RequireComponent(typeof(Aim))]
     [RequireComponent(typeof(Movement))]
-    public class FollowTarget : Enemy
+    public class FollowTarget : MonoBehaviour
     {
         [Header("Dependencies")]
         [SerializeField] private Transform target;
 
-        protected override void Start()
+        private Aim _aim;
+        private Movement _movement;
+
+        private void Awake()
         {
-            base.Start();
-            
-            if (target == null)
-                target = LevelDependencies.Player.transform;
-                
-            _Aim.SetAimDirection(target);
+            _aim = GetComponent<Aim>();
+            _movement = GetComponent<Movement>();
+        }
+
+        private void Start()
+        {
+            if (TryGetComponent<Enemy>(out Enemy enemy))
+                target = enemy.Target;
+
+            if (target)
+                _aim.SetAimDirection(target);
         }
 
         private void Update()
         {
-            _Aim.SetAimDirection(target);
-            _Movement.SetCurrentDirection(_Aim.LookDirection);
+            if (!target)
+                return;
+            
+            _aim.SetAimDirection(target);
+            _movement.SetCurrentDirection(_aim.LookDirection);
         }
     }
 }

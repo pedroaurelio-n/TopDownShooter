@@ -5,15 +5,12 @@ using PedroAurelio.Utils;
 namespace TopDownShooter
 {
     [RequireComponent(typeof(Health))]
-    public abstract class Enemy : MonoBehaviour, IKillable
+    public class Enemy : MonoBehaviour, IKillable
     {
-        public delegate void EnemySpawned(Enemy enemy);
-        public static event EnemySpawned onEnemySpawned;
+        public static List<Enemy> EnemyInstances { get; set; } = new();
+        public Transform Target { get; set; }
 
-        public delegate void EnemyDefeated(Enemy enemy);
-        public static event EnemyDefeated onEnemyDefeated;
-
-        [Header("Defeat Settings")]
+        [Header("Death Settings")]
         [SerializeField] private IntEvent enemyScoreEvent;
         [SerializeField] private int defeatScore;
         [SerializeField] private GameObject deathParticles;
@@ -23,25 +20,29 @@ namespace TopDownShooter
 
         private Animator _animator;
 
-        protected Movement _Movement;
-        protected Aim _Aim;
-        protected ShootBullets _Shoot;
+        private Movement _movement;
+        private ShootBullets _shoot;
 
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
 
-            TryGetComponent<Movement>(out _Movement);
-            TryGetComponent<Aim>(out _Aim);
-            _Shoot = GetComponentInChildren<ShootBullets>();
+            TryGetComponent<Movement>(out _movement);
+            _shoot = GetComponentInChildren<ShootBullets>();
+
+            EnemyInstances.Add(this);
         }
 
-        protected virtual void Start() => onEnemySpawned?.Invoke(this);
-
-        public void DisableMovement()
+        public void Disable()
         {
-            _Movement.StopMovement();
-            _Movement.enabled = false;
+            _movement.StopMovement();
+            _movement.enabled = false;
+
+            if (_shoot)
+            {
+                _shoot.SetShootBool(false);
+                _shoot.enabled = false;
+            }
         }
 
         public void Damage()
@@ -56,7 +57,7 @@ namespace TopDownShooter
             deathParticles.transform.SetParent(LevelDependencies.Dynamic);
             
             enemyScoreEvent?.RaiseEvent(defeatScore);
-            onEnemyDefeated?.Invoke(this);
+            EnemyInstances.Remove(this);
             Destroy(gameObject);
         }
 

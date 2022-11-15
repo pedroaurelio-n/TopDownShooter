@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8672030640356770500}
+  - component: {fileID: -7645572322056665539}
   - component: {fileID: 8672030640356770498}
   - component: {fileID: 8672030640356770497}
   - component: {fileID: 8672030640356770496}
@@ -40,6 +41,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7645572322056665539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672030640356770523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e126562872b0945aa79d8b8135aa44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyScoreEvent: {fileID: 11400000, guid: 30644d7d4ba08ad4f9ebf63642a8a2e6, type: 2}
+  defeatScore: 1
+  deathParticles: {fileID: 7550081540579663376}
+  collectablePrefabs:
+  - {fileID: 9030560819137138348, guid: 657368270c0a9a643bf2169f793c83f8, type: 3}
+  - {fileID: 2596256545928782627, guid: 249ba15db55695a4fbc184147a29e70e, type: 3}
 --- !u!114 &8672030640356770498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,12 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0be5390da8f4e438f46c4c16423aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScoreEvent: {fileID: 11400000, guid: 30644d7d4ba08ad4f9ebf63642a8a2e6, type: 2}
-  defeatScore: 50
-  deathParticles: {fileID: 7550081540579663376}
-  collectablePrefabs:
-  - {fileID: 9030560819137138348, guid: 657368270c0a9a643bf2169f793c83f8, type: 3}
-  - {fileID: 2596256545928782627, guid: 249ba15db55695a4fbc184147a29e70e, type: 3}
   target: {fileID: 0}
 --- !u!114 &8672030640356770497
 MonoBehaviour:
