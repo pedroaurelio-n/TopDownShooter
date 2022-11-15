@@ -5,7 +5,7 @@ using PedroAurelio.Utils;
 namespace TopDownShooter
 {
     [RequireComponent(typeof(Health))]
-    public abstract class Enemy : MonoBehaviour, IDestroyable
+    public abstract class Enemy : MonoBehaviour, IKillable
     {
         public delegate void EnemySpawned(Enemy enemy);
         public static event EnemySpawned onEnemySpawned;
@@ -44,7 +44,11 @@ namespace TopDownShooter
             _Movement.enabled = false;
         }
 
-        public void Destroy()
+        public void Damage()
+        {
+        }
+
+        public void Death()
         {
             CheckForDrop();
 

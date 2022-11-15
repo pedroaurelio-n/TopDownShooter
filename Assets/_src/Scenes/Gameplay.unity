@@ -461,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 169399403}
   - component: {fileID: 169399408}
+  - component: {fileID: 169399409}
   - component: {fileID: 169399407}
   - component: {fileID: 169399406}
   - component: {fileID: 169399405}
@@ -2603,6 +2604,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &169399409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169399402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11130088924e0249ab97db05f3e4a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 99
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &211145377
 GameObject:
   m_ObjectHideFlags: 0
@@ -10634,6 +10651,7 @@ GameObject:
   - component: {fileID: 1934155040}
   - component: {fileID: 1934155039}
   - component: {fileID: 1934155037}
+  - component: {fileID: 1934155043}
   - component: {fileID: 1934155041}
   - component: {fileID: 1934155035}
   m_Layer: 6
@@ -10687,6 +10705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthModifiedEvent: {fileID: 11400000, guid: 6086b4b9b6688b54d8c510d56b6614a6, type: 2}
   startHealth: 3
+  maxHealth: 5
 --- !u!114 &1934155038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10768,6 +10787,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934155043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934155034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11130088924e0249ab97db05f3e4a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 99
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2047982207
 GameObject:
   m_ObjectHideFlags: 0

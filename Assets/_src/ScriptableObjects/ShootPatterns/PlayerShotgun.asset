@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8628afa292752a6409c49d4ca9c56abc, type: 3}
   m_Name: PlayerShotgun
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 1153260764010522316, guid: 89a0301a7c3d40d4fb36e17d94be0a35, type: 3}
+  BulletPrefab: {fileID: 1153260764010522316, guid: 8e0308c3c754ded4c9c0360c6c23387f, type: 3}
   MaxAmmo: 10
   StartDelay: 0
   SpinRate: 0

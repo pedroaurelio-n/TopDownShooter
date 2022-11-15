@@ -6,16 +6,13 @@ namespace TopDownShooter
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Health))]
-    public class Bullet : MonoBehaviour, IDestroyable
+    public class Bullet : MonoBehaviour, IKillable
     {
         [Header("Settings")]
-        [SerializeField] private float damage;
         [SerializeField] private float knockbackForce;
-        [SerializeField] private bool collideWithEnemyBullets;
         [SerializeField] private GameObject collisionParticles;
 
         private Rigidbody2D _rigidbody;
-        private Health _health;
 
         // private IObjectPool<Bullet> _pool;
         // private bool _isActiveOnPool;
@@ -23,7 +20,6 @@ namespace TopDownShooter
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _health = GetComponent<Health>();
         }
 
         // public void SetPool(IObjectPool<Bullet> pool) => _pool = pool;
@@ -31,7 +27,6 @@ namespace TopDownShooter
         public void Initialize(Vector3 position, Vector3 rotation, float speed)
         {
             // _isActiveOnPool = true;
-            _health.Initialize();
 
             transform.position = position;
             transform.rotation = Quaternion.Euler(rotation);
@@ -40,26 +35,18 @@ namespace TopDownShooter
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent<Health>(out Health target))
+            if (other.TryGetComponent<Movement>(out Movement targetMovement))
             {
-                if (!collideWithEnemyBullets && target.TryGetComponent<Bullet>(out Bullet targetBullet))
-                    return;
-
-                if (target.TryGetComponent<Movement>(out Movement targetMovement))
-                {
-                    var direction = targetMovement.transform.position - transform.position;
-                    targetMovement.ApplyKnockback(direction, knockbackForce);
-                }
-                
-                target.ModifyHealth(-damage);
-                _health.ModifyHealth(-1f);
-                return;
+                var direction = targetMovement.transform.position - transform.position;
+                targetMovement.ApplyKnockback(direction, knockbackForce);
             }
-
-            _health.ModifyHealth(Mathf.NegativeInfinity);
         }
 
-        public void Destroy()
+        public void Damage()
+        {
+        }
+
+        public void Death()
         {
             collisionParticles.SetActive(true);
             collisionParticles.transform.SetParent(LevelDependencies.Dynamic);

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8628afa292752a6409c49d4ca9c56abc, type: 3}
-  m_Name: PlayerRapid
+  m_Name: PlayerFast
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 1153260764010522316, guid: 89a0301a7c3d40d4fb36e17d94be0a35, type: 3}
+  BulletPrefab: {fileID: 1153260764010522316, guid: f197395f1b081db4abeacdcd8597ef4b, type: 3}
   MaxAmmo: 50
   StartDelay: 0
   SpinRate: 0

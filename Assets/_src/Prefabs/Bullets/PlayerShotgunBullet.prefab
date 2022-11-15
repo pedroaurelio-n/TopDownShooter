@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1153260762590320279}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.32, y: 0.16, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1153260764010522319}
@@ -95,11 +95,11 @@ GameObject:
   - component: {fileID: 1153260764010522319}
   - component: {fileID: 1153260764010522316}
   - component: {fileID: 1980634825189216204}
-  - component: {fileID: 1092007227232318278}
+  - component: {fileID: -2693156803139143585}
   - component: {fileID: 1153260764010522317}
-  - component: {fileID: 5873384310323418272}
+  - component: {fileID: 4985094612570429918}
   m_Layer: 8
-  m_Name: PlayerDefaultBullet
+  m_Name: PlayerShotgunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   healthModifiedEvent: {fileID: 0}
   startHealth: 1
   maxHealth: 1
---- !u!114 &1092007227232318278
+--- !u!114 &-2693156803139143585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11130088924e0249ab97db05f3e4a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   damageLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -188,7 +188,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &5873384310323418272
+--- !u!70 &4985094612570429918
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +202,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 0.2}
+  m_Size: {x: 0.25, y: 0.32}
   m_Direction: 1
 --- !u!1001 &6101735670903135316
 PrefabInstance:

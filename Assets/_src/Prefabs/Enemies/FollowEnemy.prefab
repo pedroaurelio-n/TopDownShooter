@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8672030640356770497}
   - component: {fileID: 8672030640356770496}
   - component: {fileID: 8672030640356770503}
+  - component: {fileID: 2568635042425505031}
   - component: {fileID: 8672030640356770502}
   - component: {fileID: 8672030640356770501}
   m_Layer: 7
@@ -103,6 +104,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthModifiedEvent: {fileID: 0}
   startHealth: 4
+  maxHealth: 4
+--- !u!114 &2568635042425505031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672030640356770523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11130088924e0249ab97db05f3e4a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!50 &8672030640356770502
 Rigidbody2D:
   serializedVersion: 4

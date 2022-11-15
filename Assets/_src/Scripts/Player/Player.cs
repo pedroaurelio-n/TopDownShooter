@@ -4,7 +4,7 @@ namespace TopDownShooter
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Health))]
-    public class Player : MonoBehaviour, IDestroyable
+    public class Player : MonoBehaviour, IKillable
     {
         public Health Health { get; private set; }
         public ShootBullets Shoot { get; private set; }
@@ -28,7 +28,11 @@ namespace TopDownShooter
             _aim = GetComponent<Aim>();
         }
 
-        public void Destroy()
+        public void Damage()
+        {
+        }
+
+        public void Death()
         {
             deathEvent?.RaiseEvent();
             gameObject.SetActive(false);
@@ -40,9 +44,6 @@ namespace TopDownShooter
             {
                 var direction = transform.position - enemy.transform.position;
                 _movement.ApplyKnockback(direction, collisionKnockback);
-
-                Health.ModifyHealth(-1f);
-                enemy.Destroy();
             }
         }
     }
