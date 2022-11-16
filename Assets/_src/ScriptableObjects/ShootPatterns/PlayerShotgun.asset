@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PlayerShotgun
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 1153260764010522316, guid: 8e0308c3c754ded4c9c0360c6c23387f, type: 3}
-  MaxAmmo: 10
+  StartAmmo: 10
+  MaxAmmo: 30
   StartDelay: 0
   SpinRate: 0
   SideCount: 3

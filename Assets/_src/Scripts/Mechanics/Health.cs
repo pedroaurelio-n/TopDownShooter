@@ -32,29 +32,45 @@ namespace TopDownShooter
 
         private void Start() => healthModifiedEvent?.RaiseEvent((int)_currentHealth);
 
-        public void ModifyHealth(float value)
+        public void IncreaseHealth(float value)
         {
-            _currentHealth += value;
+            ModifyHealth(value, out _);
+        }
 
-            if (_currentHealth > maxHealth)
-                _currentHealth = maxHealth;
+        public void IncreaseHealth(float value, out bool reachedMax)
+        {
+            ModifyHealth(value, out reachedMax);
+        }
 
-            healthModifiedEvent?.RaiseEvent((int)_currentHealth);
-
-            if (_currentHealth <= 0f)
+        public void DecreaseHealth(float value)
+        {
+            ModifyHealth(value, out _);
+            
+            if (_currentHealth == 0f)
             {
-                _currentHealth = 0f;
-                Die();
+                _killable.Death();
                 return;
             }
 
             _killable.Damage();
         }
 
-        private void Die()
+        private void ModifyHealth(float value, out bool max)
         {
-            _currentHealth = 0f;
-            _killable.Death();
+            max = false;
+
+            _currentHealth += value;
+
+            if (_currentHealth > maxHealth)
+            {
+                _currentHealth = maxHealth;
+                max = true;
+            }
+
+            if (_currentHealth < 0f)
+                _currentHealth = 0f;
+
+            healthModifiedEvent?.RaiseEvent((int)_currentHealth);
         }
     }
 }

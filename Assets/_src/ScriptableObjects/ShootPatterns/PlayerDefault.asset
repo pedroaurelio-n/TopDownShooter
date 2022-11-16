@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerDefault
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 1153260764010522316, guid: 89a0301a7c3d40d4fb36e17d94be0a35, type: 3}
+  StartAmmo: -1
   MaxAmmo: 0
   StartDelay: 0
   SpinRate: 0

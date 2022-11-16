@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DropChance>k__BackingField: 0.02
   healthAdd: 1
+  collectScoreEvent: {fileID: 11400000, guid: 30644d7d4ba08ad4f9ebf63642a8a2e6, type: 2}
+  score: 500
 --- !u!58 &9030560819137138351
 CircleCollider2D:
   m_ObjectHideFlags: 0

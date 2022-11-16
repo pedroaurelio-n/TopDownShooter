@@ -36,7 +36,6 @@ namespace TopDownShooter
                     var randomCell = _activeSpawnCells[Random.Range(0, _activeSpawnCells.Count)];
                     var enemy = Instantiate(enemyPrefab, randomCell.RandomPositionInsideBounds(), Quaternion.identity, LevelDependencies.Dynamic);
                     enemy.Target = target;
-                    Debug.Log(enemy.Target.name);
                 }
 
                 yield return _waitForInterval;

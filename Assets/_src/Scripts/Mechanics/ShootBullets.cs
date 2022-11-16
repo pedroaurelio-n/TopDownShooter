@@ -43,19 +43,24 @@ namespace TopDownShooter
                 dynamic = LevelDependencies.Dynamic;
         }
 
-        private void InitializePattern(ShootingPattern pattern)
+        private void InitializePattern(ShootingPattern newPattern)
         {
             var oldPattern = _pattern;
-            _pattern = pattern;
+            _pattern = newPattern;
 
             if (_pattern == oldPattern && _pattern != defaultPattern)
-                _ammoRemaining += pattern.MaxAmmo;
+            {
+                _ammoRemaining += newPattern.StartAmmo;
+                
+                if (_ammoRemaining > _pattern.MaxAmmo)
+                    _ammoRemaining = _pattern.MaxAmmo;
+            }
             else
             {
-                if (_pattern.MaxAmmo <= 0)
+                if (_pattern.StartAmmo <= 0)
                     _ammoRemaining = -1;
                 else
-                    _ammoRemaining = _pattern.MaxAmmo;
+                    _ammoRemaining = _pattern.StartAmmo;
             }
 
 

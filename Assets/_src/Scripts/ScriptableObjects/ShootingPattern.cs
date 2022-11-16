@@ -9,6 +9,7 @@ namespace TopDownShooter
         public Bullet BulletPrefab;
 
         [Header("Ammo Settings")]
+        public int StartAmmo;
         public int MaxAmmo;
 
         [Header("Spawn Settings")]

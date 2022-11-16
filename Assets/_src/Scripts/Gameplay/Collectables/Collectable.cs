@@ -6,7 +6,7 @@ namespace TopDownShooter
 {
     public abstract class Collectable : MonoBehaviour
     {
-        [field: SerializeField] public float DropChance { get; private set; }
+        [field: SerializeField, Range(0f, 1f)] public float DropChance { get; private set; }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -17,8 +17,6 @@ namespace TopDownShooter
             }
         }
 
-        protected virtual void CollectAction(Player player)
-        {
-        }
+        protected abstract void CollectAction(Player player);
     }
 }

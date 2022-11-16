@@ -22,7 +22,7 @@ namespace TopDownShooter
             if (objectIsInDamageLayer)
             {
                 if (other.TryGetComponent<Health>(out Health objectHealth))
-                    objectHealth.ModifyHealth(-damage);
+                    objectHealth.DecreaseHealth(-damage);
             }
         }
 
