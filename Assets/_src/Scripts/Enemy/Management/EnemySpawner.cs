@@ -8,10 +8,12 @@ namespace TopDownShooter
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private Transform target;
-        [SerializeField] private Enemy enemyPrefab;
+        [SerializeField] private List<Enemy> enemyPrefabs;
         [SerializeField] private Vector2 spawnCount;
         [SerializeField] private float startDelay;
         [SerializeField] private float spawnTime;
+
+        private int _totalSpawnWeight;
 
         private List<SpawnCell> _activeSpawnCells = new List<SpawnCell>();
 
@@ -34,12 +36,32 @@ namespace TopDownShooter
                 for (int i = 0; i < enemiesToSpawn; i++)
                 {
                     var randomCell = _activeSpawnCells[Random.Range(0, _activeSpawnCells.Count)];
-                    var enemy = Instantiate(enemyPrefab, randomCell.RandomPositionInsideBounds(), Quaternion.identity, LevelDependencies.Dynamic);
+                    var enemy = Instantiate(GetRandomWeightedEnemy(), randomCell.RandomPositionInsideBounds(), Quaternion.identity, LevelDependencies.Dynamic);
                     enemy.Target = target;
                 }
 
                 yield return _waitForInterval;
             }
+        }
+
+        private Enemy GetRandomWeightedEnemy()
+        {
+            _totalSpawnWeight = 0;
+
+            foreach (Enemy enemy in enemyPrefabs)
+                _totalSpawnWeight += enemy.SpawnWeight;
+
+            var rand = Random.Range(0, _totalSpawnWeight + 1);
+            var weightSum = 0;
+
+            foreach (Enemy enemy in enemyPrefabs)
+            {
+                weightSum += enemy.SpawnWeight;
+                if (rand <= weightSum)
+                    return enemy;
+            }
+
+            return null;
         }
 
         public void StopSpawnCoroutine() => StopCoroutine(_spawnCoroutine);

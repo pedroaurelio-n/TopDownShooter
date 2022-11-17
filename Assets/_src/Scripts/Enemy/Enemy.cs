@@ -10,6 +10,9 @@ namespace TopDownShooter
         public static List<Enemy> EnemyInstances { get; set; } = new();
         public Transform Target { get; set; }
 
+        [field: Header("Spawn Settings")]
+        [field: SerializeField] public int SpawnWeight;
+
         [Header("Death Settings")]
         [SerializeField] private IntEvent enemyScoreEvent;
         [SerializeField] private int defeatScore;

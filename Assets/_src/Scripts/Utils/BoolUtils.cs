@@ -7,7 +7,7 @@ namespace PedroAurelio.Utils
         public static bool CalculateRandomChance(float chance)
         {
             var threshold = 1f - chance;
-            var rand = Random.Range(0f, 1f);
+            var rand = Random.value;
             return rand >= threshold ? true : false;
         }
     }
