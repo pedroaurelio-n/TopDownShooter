@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerFast
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 1153260764010522316, guid: f197395f1b081db4abeacdcd8597ef4b, type: 3}
+  BulletSO: {fileID: 11400000, guid: f133e14ee11a9f24cacbedf5d5972d59, type: 2}
   StartAmmo: 50
   MaxAmmo: 150
   StartDelay: 0

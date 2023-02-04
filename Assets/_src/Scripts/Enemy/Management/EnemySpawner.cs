@@ -9,6 +9,7 @@ namespace TopDownShooter
     {
         [SerializeField] private Transform target;
         [SerializeField] private List<Enemy> enemyPrefabs;
+        [SerializeField] private int maxEnemiesOnScreen;
         [SerializeField] private Vector2 spawnCount;
         [SerializeField] private float startDelay;
         [SerializeField] private float spawnTime;
@@ -32,6 +33,12 @@ namespace TopDownShooter
 
             while (true)
             {
+                if (Enemy.EnemyInstances.Count > maxEnemiesOnScreen)
+                {
+                    yield return _waitForInterval;
+                    continue;
+                }
+
                 var enemiesToSpawn = Random.Range((int)spawnCount.x, (int)spawnCount.y + 1);
                 for (int i = 0; i < enemiesToSpawn; i++)
                 {

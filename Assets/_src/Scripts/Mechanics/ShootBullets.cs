@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Pool;
+// using UnityEngine.Pool;
 using UnityEngine.InputSystem;
  
 namespace TopDownShooter
@@ -115,8 +115,8 @@ namespace TopDownShooter
             if (_pattern.SideCount == 1)
             {
                 // var bullet = _defaultBulletPool.Get();
-                var bullet = Instantiate(_pattern.BulletPrefab, dynamic);
-                bullet.Initialize(spawnPosition.position, direction, _pattern.BulletSpeed);
+                var bullet = BulletManager.Instance.GetBullet(_pattern.BulletSO);
+                bullet.Setup(spawnPosition.position, direction, _pattern.BulletSpeed);
             }
             else
             {
@@ -133,8 +133,8 @@ namespace TopDownShooter
                     angleOffset.z = angleDivision * i;
 
                     // var bullet = _defaultBulletPool.Get();
-                    var bullet = Instantiate(_pattern.BulletPrefab, dynamic);
-                    bullet.Initialize(spawnPosition.position, direction + angleOffset, _pattern.BulletSpeed);
+                    var bullet = BulletManager.Instance.GetBullet(_pattern.BulletSO);
+                    bullet.Setup(spawnPosition.position, direction + angleOffset, _pattern.BulletSpeed);
                 }
             }
 

@@ -8,26 +8,39 @@ namespace TopDownShooter
     [RequireComponent(typeof(Health))]
     public class Bullet : MonoBehaviour, IKillable
     {
-        [Header("Settings")]
+        [field: Header("Dependencies")]
+        [field: SerializeField] public BulletSO BulletSO { get; set; }
+        [SerializeField] private GameObject vfxObject;
+
+        [field: Header("Settings")]
         [SerializeField] private float knockbackForce;
-        [SerializeField] private GameObject collisionParticles;
+        [SerializeField] private BulletParticles bulletParticles;
 
+        private SpriteRenderer _spriteRenderer;
+        private Transform _spriteTransform;
         private Rigidbody2D _rigidbody;
-
-        // private IObjectPool<Bullet> _pool;
-        // private bool _isActiveOnPool;
+        private CapsuleCollider2D _collider2D;
 
         private void Awake()
         {
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            _spriteTransform = _spriteRenderer.transform;
+            _collider2D = GetComponent<CapsuleCollider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        // public void SetPool(IObjectPool<Bullet> pool) => _pool = pool;
-
-        public void Initialize(Vector3 position, Vector3 rotation, float speed)
+        public void Initialize()
         {
-            // _isActiveOnPool = true;
+            ActivateComponents(true);
 
+            _spriteRenderer.sprite = BulletSO.Sprite;
+            _spriteRenderer.color = BulletSO.Color;
+            _spriteTransform.localScale = BulletSO.Size;
+            _collider2D.size = BulletSO.ColliderSize;
+        }
+
+        public void Setup(Vector3 position, Vector3 rotation, float speed)
+        {
             transform.position = position;
             transform.rotation = Quaternion.Euler(rotation);
             _rigidbody.velocity = transform.right * speed;
@@ -42,20 +55,26 @@ namespace TopDownShooter
             }
         }
 
+        private void ActivateComponents(bool value)
+        {
+            bulletParticles.gameObject.SetActive(!value);
+
+            _spriteRenderer.enabled = value;
+            _collider2D.enabled = value;
+            vfxObject.SetActive(value);
+        }
+
         public void Damage()
         {
         }
 
         public void Death()
         {
-            collisionParticles.SetActive(true);
-            collisionParticles.transform.SetParent(LevelDependencies.Dynamic);
-            Destroy(gameObject);
-            // if (_isActiveOnPool)
-            // {
-            //     _pool.Release(this);
-            //     _isActiveOnPool = false;
-            // }
+            _rigidbody.velocity = Vector2.zero;
+            ActivateComponents(false);
+
+            bulletParticles.transform.SetParent(LevelDependencies.Dynamic);
+            bulletParticles.Initialize(this);
         }
     }
 }

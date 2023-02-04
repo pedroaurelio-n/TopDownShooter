@@ -6,7 +6,7 @@ namespace TopDownShooter
     public class ShootingPattern : ScriptableObject
     {
         [Header("Dependencies")]
-        public Bullet BulletPrefab;
+        public BulletSO BulletSO;
 
         [Header("Ammo Settings")]
         public int StartAmmo;
