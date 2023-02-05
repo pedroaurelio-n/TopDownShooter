@@ -10,15 +10,15 @@ namespace TopDownShooter
         {
         }
 
-        private Bullet CreateObject(BulletSO bulletSO)
+        private Bullet CreateObject(BulletSO bulletSO, Bullet bulletPrefab)
         {
-            var newObject = Object.Instantiate(_object);
+            var newObject = Object.Instantiate(bulletPrefab);
             newObject.BulletSO = bulletSO;
             Pool.Add(newObject);
             return newObject;
         }
 
-        public Bullet GetObject(BulletSO bulletSO)
+        public Bullet GetObject(BulletSO bulletSO, Bullet bulletPrefab)
         {
             Bullet bullet;
 
@@ -36,7 +36,7 @@ namespace TopDownShooter
                 }
             }
 
-            bullet = CreateObject(bulletSO);
+            bullet = CreateObject(bulletSO, bulletPrefab);
             bullet.gameObject.SetActive(true);
             bullet.Initialize();
             return bullet;

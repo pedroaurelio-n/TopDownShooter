@@ -19,9 +19,9 @@ namespace TopDownShooter
             _pool = new BulletPool(baseBullet);
         }
 
-        public Bullet GetBullet(BulletSO bulletSO)
+        public Bullet GetBullet(BulletSO bulletSO, Bullet bulletPrefab)
         {
-            var bullet = _pool.GetObject(bulletSO);
+            var bullet = _pool.GetObject(bulletSO, bulletPrefab);
             bullet.transform.SetParent(dynamic);
             return bullet;
         }

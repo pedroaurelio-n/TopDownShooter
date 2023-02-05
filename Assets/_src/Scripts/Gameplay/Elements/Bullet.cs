@@ -18,21 +18,13 @@ namespace TopDownShooter
         [SerializeField] private float knockbackForce;
         [SerializeField] private BulletParticles bulletParticles;
 
-        private Health _health;
-        private ApplyDamage _damage;
-
         private SpriteRenderer _spriteRenderer;
-        private Transform _spriteTransform;
         private Rigidbody2D _rigidbody;
         private CapsuleCollider2D _collider2D;
 
         private void Awake()
         {
-            _health = GetComponent<Health>();
-            _damage = GetComponent<ApplyDamage>();
-
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            _spriteTransform = _spriteRenderer.transform;
             _collider2D = GetComponent<CapsuleCollider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
         }
@@ -40,14 +32,6 @@ namespace TopDownShooter
         public void Initialize()
         {
             ActivateComponents(true);
-
-            _health.SetCurrentHealth(BulletSO.Health);
-            _damage.SetDamage(BulletSO.Damage);
-
-            _spriteRenderer.sprite = BulletSO.Sprite;
-            _spriteRenderer.color = BulletSO.Color;
-            _spriteTransform.localScale = BulletSO.Size;
-            _collider2D.size = BulletSO.ColliderSize;
         }
 
         public void Setup(Vector3 position, Vector3 rotation, float speed)

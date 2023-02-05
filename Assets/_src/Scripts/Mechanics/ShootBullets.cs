@@ -18,18 +18,12 @@ namespace TopDownShooter
         private ShootingPattern _pattern;
         private int _ammoRemaining;
 
-        // private ObjectPool<Bullet> _defaultBulletPool;
-        // private ObjectPool<Bullet> _specialBulletPool;
-
         private bool _shootInput;
         private float _fireTime;
         private Vector3 _rotation;
 
         private void Awake()
         {
-            // _defaultBulletPool = new ObjectPool<Bullet>(OnCreateBullet, OnGetBullet, OnReleaseBullet);
-            // _specialBulletPool = new ObjectPool<Bullet>(OnCreateBullet, OnGetBullet, OnReleaseBullet);
-
             if (spawnPosition == null)
                 spawnPosition = transform;
         }
@@ -70,18 +64,6 @@ namespace TopDownShooter
                 _rotation.z = initialRotation;
         }
 
-        // #region Pooling Methods
-        // private Bullet OnCreateBullet()
-        // {
-        //     var bullet = Instantiate(_pattern.BulletPrefab, dynamic);
-        //     bullet.SetPool(_defaultBulletPool);
-        //     return bullet;
-        // }
-
-        // private void OnGetBullet(Bullet bullet) => bullet.gameObject.SetActive(true);
-        // private void OnReleaseBullet(Bullet bullet) => bullet.gameObject.SetActive(false);
-        // #endregion
-
         private void FixedUpdate()
         {
             if (_fireTime > 0f)
@@ -114,8 +96,7 @@ namespace TopDownShooter
 
             if (_pattern.SideCount == 1)
             {
-                // var bullet = _defaultBulletPool.Get();
-                var bullet = BulletManager.Instance.GetBullet(_pattern.BulletSO);
+                var bullet = BulletManager.Instance.GetBullet(_pattern.BulletSO, _pattern.BulletPrefab);
                 bullet.Setup(spawnPosition.position, direction, _pattern.BulletSpeed);
             }
             else
@@ -132,8 +113,7 @@ namespace TopDownShooter
                 {
                     angleOffset.z = angleDivision * i;
 
-                    // var bullet = _defaultBulletPool.Get();
-                    var bullet = BulletManager.Instance.GetBullet(_pattern.BulletSO);
+                    var bullet = BulletManager.Instance.GetBullet(_pattern.BulletSO, _pattern.BulletPrefab);
                     bullet.Setup(spawnPosition.position, direction + angleOffset, _pattern.BulletSpeed);
                 }
             }

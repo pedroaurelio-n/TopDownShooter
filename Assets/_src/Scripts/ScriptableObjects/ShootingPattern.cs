@@ -7,6 +7,7 @@ namespace TopDownShooter
     {
         [Header("Dependencies")]
         public BulletSO BulletSO;
+        public Bullet BulletPrefab;
 
         [Header("Ammo Settings")]
         public int StartAmmo;
