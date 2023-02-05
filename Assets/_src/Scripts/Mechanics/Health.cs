@@ -32,6 +32,12 @@ namespace TopDownShooter
 
         private void Start() => healthModifiedEvent?.RaiseEvent((int)_currentHealth);
 
+        public void SetCurrentHealth(float health)
+        {
+            var h = Mathf.Min(health, maxHealth);
+            _currentHealth = h;
+        }
+
         public void IncreaseHealth(float value)
         {
             ModifyHealth(value, out _);

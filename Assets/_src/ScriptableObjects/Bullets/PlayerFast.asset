@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab6033d8ba31414786ec36637fb7a8b, type: 3}
   m_Name: PlayerFast
   m_EditorClassIdentifier: 
+  Health: 1
+  Damage: 1
   Sprite: {fileID: 21300000, guid: 94cb73a276c20be4b9d94ba7dfffbd6c, type: 3}
   Color: {r: 0.9450981, g: 0.95294124, b: 0.7803922, a: 1}
   Size: {x: 0.072, y: 0.144, z: 0.072}

@@ -278,11 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43e21ef98a2d414b9174731deea756d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  willAccelerate: 0
+  moveSpeed: 3
   maxSpeed: 4.5
   posAccel: 20
   negAccel: 20
-  knockbackMultiplier: 1
+  knockbackMultiplier: 0
 --- !u!114 &5745749154504473324
 MonoBehaviour:
   m_ObjectHideFlags: 0

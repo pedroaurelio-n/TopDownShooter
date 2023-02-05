@@ -8,10 +8,22 @@ namespace TopDownShooter
         [SerializeField] private float damage;
         [SerializeField] private LayerMask damageLayers;
 
+        private float _damage;
+
+        private void Awake()
+        {
+            _damage = damage;
+        }
+
         private void OnValidate()
         {
             if (damage < 0f)
                 damage = 0f;
+        }
+
+        public void SetDamage(float damage)
+        {
+            _damage = damage;
         }
 
         private void CheckForDamage(GameObject other)

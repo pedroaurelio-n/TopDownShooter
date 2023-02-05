@@ -9,6 +9,7 @@ namespace TopDownShooter
         public bool IsMoving { get; private set; }
 
         [Header("Move Settings")]
+        [SerializeField] private bool willAccelerate;
         [SerializeField, Range(0f, 10f)] private float moveSpeed = 3f;
         [SerializeField, Range(0f, 15f)] private float maxSpeed = 10f;
         [SerializeField, Range(0f, 20f)] private float posAccel = 5f;
@@ -25,6 +26,9 @@ namespace TopDownShooter
 
         private void Move()
         {
+            if (!willAccelerate)
+                return;
+
             Vector2 targetSpeed;
             float acceleration;
 
@@ -52,13 +56,32 @@ namespace TopDownShooter
             _rigidbody.AddForce(knockbackMultiplier * force * direction.normalized, ForceMode2D.Impulse);
         }
 
+        public void ReflectMovement(Vector2 normal)
+        {
+            var newDirection = Vector2.Reflect(_currentDirection, normal);
+            SetCurrentDirection(newDirection);
+        }
+
         public void StopMovement()
         {
             _currentDirection = Vector2.zero;
             _rigidbody.velocity = Vector2.zero;
         }
 
-        public void SetCurrentDirection(Vector2 direction) => _currentDirection = direction.normalized;
+        public Vector2 GetCurrentDirection()
+        {
+            return _currentDirection;
+        }
+
+        public void SetCurrentDirection(Vector2 direction)
+        {
+            _currentDirection = direction.normalized;
+
+            if (willAccelerate)
+                return;
+
+            _rigidbody.velocity = _currentDirection * moveSpeed;
+        }
 
         public void SetCurrentDirection(InputAction.CallbackContext ctx) => SetCurrentDirection(ctx.ReadValue<Vector2>());
     }
