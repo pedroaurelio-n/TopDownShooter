@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PedroAurelio.Utils;
+using PedroAurelio.EventSystem;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     [RequireComponent(typeof(Health))]
     public class Enemy : MonoBehaviour, IKillable

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     [RequireComponent(typeof(BoxCollider2DGrid))]
     public class EnemySpawner : MonoBehaviour
     {
+        [Header("Dependencies")]
         [SerializeField] private Transform target;
         [SerializeField] private List<Enemy> enemyPrefabs;
+
+        [Header("Settings")]
         [SerializeField] private int maxEnemiesOnScreen;
         [SerializeField] private Vector2 spawnCount;
         [SerializeField] private float startDelay;

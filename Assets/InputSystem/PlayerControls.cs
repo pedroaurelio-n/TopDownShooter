@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {

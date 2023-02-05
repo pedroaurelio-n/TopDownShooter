@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     public interface IKillable
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     [CreateAssetMenu(fileName = "New Shooting Pattern", menuName = "Shooting Pattern")]
     public class ShootingPattern : ScriptableObject

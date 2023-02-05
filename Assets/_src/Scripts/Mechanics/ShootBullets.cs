@@ -1,8 +1,8 @@
 using UnityEngine;
-// using UnityEngine.Pool;
 using UnityEngine.InputSystem;
+using PedroAurelio.EventSystem;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     public class ShootBullets : MonoBehaviour
     {

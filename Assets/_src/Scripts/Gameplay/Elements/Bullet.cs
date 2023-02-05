@@ -1,8 +1,6 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Pool;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Health))]

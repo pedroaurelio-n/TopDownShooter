@@ -1,10 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-#if UNITY_EDITOR
 using UnityEditor;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     [CustomEditor(typeof(BoxCollider2DGrid))]
     public class BuildGridInspector : Editor
@@ -22,7 +19,6 @@ namespace TopDownShooter
                 grid.DestroyGrid();
         }
     }
-    #endif
 
     public class BoxCollider2DGrid : MonoBehaviour
     {

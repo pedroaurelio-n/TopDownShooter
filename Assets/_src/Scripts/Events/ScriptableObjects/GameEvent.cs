@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
-namespace TopDownShooter
+namespace PedroAurelio.EventSystem
 {
     [CreateAssetMenu(fileName = "New Game Event", menuName = "Events/Game Event")]
     public class GameEvent : ScriptableObject

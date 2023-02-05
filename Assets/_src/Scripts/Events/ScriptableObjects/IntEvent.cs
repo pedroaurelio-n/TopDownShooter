@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace TopDownShooter
+namespace PedroAurelio.EventSystem
 {
     [System.Serializable]
     public class IntUnityEvent : UnityEvent<int>

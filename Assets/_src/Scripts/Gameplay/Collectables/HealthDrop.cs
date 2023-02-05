@@ -1,6 +1,7 @@
 using UnityEngine;
+using PedroAurelio.EventSystem;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     public class HealthDrop : Collectable
     {

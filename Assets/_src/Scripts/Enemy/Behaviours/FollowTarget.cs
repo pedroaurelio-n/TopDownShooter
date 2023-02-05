@@ -1,6 +1,6 @@
 using UnityEngine;
  
-namespace TopDownShooter
+namespace PedroAurelio.TopDownShooter
 {
     [RequireComponent(typeof(Aim))]
     [RequireComponent(typeof(Movement))]

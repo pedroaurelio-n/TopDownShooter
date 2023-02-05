@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8628afa292752a6409c49d4ca9c56abc, type: 3}
   m_Name: PlayerDefault
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 1153260764010522316, guid: 89a0301a7c3d40d4fb36e17d94be0a35, type: 3}
   BulletSO: {fileID: 11400000, guid: e4f3fdb245d6b3c4e8d03edb0e967370, type: 2}
+  BulletPrefab: {fileID: 1153260764010522316, guid: 89a0301a7c3d40d4fb36e17d94be0a35, type: 3}
   StartAmmo: -1
   MaxAmmo: 0
   StartDelay: 0
@@ -25,5 +25,5 @@ MonoBehaviour:
   MissAngleOpening: 20
   NeedInput: 1
   IsAiming: 1
-  BulletSpeed: 7
+  BulletSpeed: 7.75
   FireRate: 0.15

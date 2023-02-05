@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
  
-namespace TopDownShooter
+namespace PedroAurelio.EventSystem
 {
     public abstract class BaseEventListener : MonoBehaviour
     {
