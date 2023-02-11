@@ -94,9 +94,6 @@ namespace PedroAurelio.TopDownShooter
                 _activeSpawnCells.Remove(cell);
         }
 
-        private void OnDisable()
-        {
-            Enemy.EnemyInstances.Clear();
-        }
+        private void OnDisable() => Enemy.EnemyInstances.Clear();
     }
 }

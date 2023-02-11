@@ -4,7 +4,9 @@ namespace PedroAurelio.TopDownShooter
 {
     public class SpawnCell : MonoBehaviour
     {
+        [Header("Settings")]
         [SerializeField] private Vector2 spawnZoneDecrease;
+
         private EnemySpawner _spawner;
         private BoxCollider2D _collider;
 

@@ -12,7 +12,7 @@ namespace PedroAurelio.TopDownShooter
         public Transform Target { get; set; }
 
         [field: Header("Spawn Settings")]
-        [field: SerializeField] public int SpawnWeight;
+        [field: SerializeField] public int SpawnWeight { get; private set; }
 
         [Header("Death Settings")]
         [SerializeField] private IntEvent enemyScoreEvent;
@@ -42,7 +42,7 @@ namespace PedroAurelio.TopDownShooter
             _movement.StopMovement();
             _movement.enabled = false;
 
-            if (_shoot)
+            if (_shoot != null)
             {
                 _shoot.SetShootBool(false);
                 _shoot.enabled = false;

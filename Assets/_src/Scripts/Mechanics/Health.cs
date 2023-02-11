@@ -28,10 +28,15 @@ namespace PedroAurelio.TopDownShooter
             if (!TryGetComponent<IKillable>(out _killable))
                 Debug.LogWarning($"Object with health doesn't have IDestroyable");
 
-            _currentHealth = startHealth;
+            Initialize();
         }
 
         private void Start() => healthModifiedEvent?.RaiseEvent((int)_currentHealth);
+
+        public void Initialize()
+        {
+            _currentHealth = startHealth;
+        }
 
         public void SetCurrentHealth(float health)
         {

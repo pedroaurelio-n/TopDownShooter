@@ -15,9 +15,6 @@ namespace PedroAurelio.TopDownShooter
             _newPattern = patterns[randomPattern];
         }
 
-        protected override void CollectAction(Player player)
-        {
-            player.Shoot.ChangePattern(_newPattern);
-        }
+        protected override void CollectAction(Player player) => player.Shoot.ChangePattern(_newPattern);
     }
 }

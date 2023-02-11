@@ -7,15 +7,9 @@ namespace PedroAurelio.TopDownShooter
     {
         private Movement _movement;
 
-        private void Awake()
-        {
-            _movement = GetComponent<Movement>();
-        }
+        private void Awake() => _movement = GetComponent<Movement>();
 
-        private void Start()
-        {
-            _movement.SetCurrentDirection(Random.insideUnitCircle.normalized);
-        }
+        private void Start() => _movement.SetCurrentDirection(Random.insideUnitCircle.normalized);
 
         private void OnCollisionEnter2D(Collision2D other)
         {
