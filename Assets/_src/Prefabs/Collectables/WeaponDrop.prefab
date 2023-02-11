@@ -133,8 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DropChance>k__BackingField: 0.1
   patterns:
-  - {fileID: 11400000, guid: c41e4b0672d48f642b1a17fc87cbd69e, type: 2}
   - {fileID: 11400000, guid: 65ec94466473f2f48a9329aa6d0aece9, type: 2}
+  - {fileID: 11400000, guid: c41e4b0672d48f642b1a17fc87cbd69e, type: 2}
 --- !u!58 &2596256545928782637
 CircleCollider2D:
   m_ObjectHideFlags: 0

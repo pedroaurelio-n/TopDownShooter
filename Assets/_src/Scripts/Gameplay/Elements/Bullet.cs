@@ -11,10 +11,12 @@ namespace PedroAurelio.TopDownShooter
 
         [Header("Dependencies")]
         [SerializeField] private GameObject vfxObject;
+        [SerializeField] private BulletParticles collisionParticles;
 
         [Header("Bullet Settings")]
         [SerializeField] private float knockbackForce;
-        [SerializeField] private BulletParticles bulletParticles;
+
+        private Health _health;
 
         private SpriteRenderer _spriteRenderer;
         private Rigidbody2D _rigidbody;
@@ -22,6 +24,8 @@ namespace PedroAurelio.TopDownShooter
 
         private void Awake()
         {
+            _health = GetComponent<Health>();
+
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _collider2D = GetComponent<CapsuleCollider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -37,6 +41,8 @@ namespace PedroAurelio.TopDownShooter
             transform.position = position;
             transform.rotation = Quaternion.Euler(rotation);
             _rigidbody.velocity = transform.right * speed;
+
+            _health.Initialize();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -50,7 +56,7 @@ namespace PedroAurelio.TopDownShooter
 
         private void ActivateComponents(bool value)
         {
-            bulletParticles.gameObject.SetActive(!value);
+            collisionParticles.gameObject.SetActive(!value);
 
             _spriteRenderer.enabled = value;
             _collider2D.enabled = value;
@@ -59,6 +65,9 @@ namespace PedroAurelio.TopDownShooter
 
         public void Damage()
         {
+            var particles = Instantiate(collisionParticles, transform.position, transform.rotation, LevelDependencies.Dynamic);
+            particles.gameObject.SetActive(true);
+            particles.Initialize(this, false);
         }
 
         public void Death()
@@ -66,8 +75,8 @@ namespace PedroAurelio.TopDownShooter
             _rigidbody.velocity = Vector2.zero;
             ActivateComponents(false);
 
-            bulletParticles.transform.SetParent(LevelDependencies.Dynamic);
-            bulletParticles.Initialize(this);
+            collisionParticles.transform.SetParent(LevelDependencies.Dynamic);
+            collisionParticles.Initialize(this, true);
         }
     }
 }

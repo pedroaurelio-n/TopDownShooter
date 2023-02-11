@@ -246,8 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxObject: {fileID: 6570937239115102164}
+  collisionParticles: {fileID: 905099299594073533}
   knockbackForce: 5
-  bulletParticles: {fileID: 905099299594073533}
 --- !u!114 &1980634825189216204
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,9 +47,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.6
   m_Color: {r: 0.909804, g: 0.39215687, b: 0.3137255, a: 1}
-  m_Intensity: 1.25
+  m_Intensity: 1.1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e126562872b0945aa79d8b8135aa44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnWeight: 3
+  <SpawnWeight>k__BackingField: 10
   enemyScoreEvent: {fileID: 11400000, guid: 30644d7d4ba08ad4f9ebf63642a8a2e6, type: 2}
   defeatScore: 100
   deathParticles: {fileID: 7550081540579663376}
