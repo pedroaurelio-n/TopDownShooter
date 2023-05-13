@@ -4926,6 +4926,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1307196012}
+  - component: {fileID: 1307196015}
   - component: {fileID: 1307196013}
   - component: {fileID: 1307196011}
   - component: {fileID: 1307196014}
@@ -4992,9 +4993,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1934155042}
-  enemyPrefabs:
-  - {fileID: -7645572322056665539, guid: 70406ca7b27f9854688fd1f1e35d6f00, type: 3}
-  - {fileID: 2450316608186924566, guid: 04466bb7d990fca45be7463190d5d562, type: 3}
   maxEnemiesOnScreen: 12
   spawnCount: {x: 2, y: 4}
   startDelay: 2
@@ -5041,6 +5039,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1307196015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307196010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be10206d662110b48a99f9b6e9a85cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabList:
+  - {fileID: -7645572322056665539, guid: 70406ca7b27f9854688fd1f1e35d6f00, type: 3}
+  - {fileID: 2450316608186924566, guid: 04466bb7d990fca45be7463190d5d562, type: 3}
 --- !u!1 &1338235177
 GameObject:
   m_ObjectHideFlags: 0
