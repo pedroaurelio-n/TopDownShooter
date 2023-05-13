@@ -284,6 +284,7 @@ MonoBehaviour:
   posAccel: 20
   negAccel: 20
   knockbackMultiplier: 0
+  knockbackDecrease: 1
 --- !u!114 &5745749154504473324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
   damageLayers:
     serializedVersion: 2
     m_Bits: 320
+  knockbackForce: 5
 --- !u!50 &5745749154504473325
 Rigidbody2D:
   serializedVersion: 4

@@ -247,7 +247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vfxObject: {fileID: 1328500229304763101}
   collisionParticles: {fileID: 905099299594073533}
-  knockbackForce: 5
 --- !u!114 &1980634825189216204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +278,7 @@ MonoBehaviour:
   damageLayers:
     serializedVersion: 2
     m_Bits: 128
+  knockbackForce: 7.5
 --- !u!50 &1153260764010522317
 Rigidbody2D:
   serializedVersion: 4
@@ -314,7 +314,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.25, y: 0.32}
+  m_Size: {x: 0.25, y: 0.4}
   m_Direction: 1
 --- !u!1 &1328500229304763101
 GameObject:

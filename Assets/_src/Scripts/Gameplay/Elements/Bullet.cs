@@ -13,9 +13,6 @@ namespace PedroAurelio.TopDownShooter
         [SerializeField] private GameObject vfxObject;
         [SerializeField] private BulletParticles collisionParticles;
 
-        [Header("Bullet Settings")]
-        [SerializeField] private float knockbackForce;
-
         private Health _health;
 
         private SpriteRenderer _spriteRenderer;
@@ -43,15 +40,6 @@ namespace PedroAurelio.TopDownShooter
             _rigidbody.velocity = transform.right * speed;
 
             _health.Initialize();
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.TryGetComponent<Movement>(out Movement targetMovement))
-            {
-                var direction = targetMovement.transform.position - transform.position;
-                targetMovement.ApplyKnockback(direction, knockbackForce);
-            }
         }
 
         private void ActivateComponents(bool value)

@@ -13,6 +13,7 @@ namespace PedroAurelio.TopDownShooter
         private float _currentHealth;
 
         private IKillable _killable;
+        private GameObject _lastDamageOrigin;
 
         private void OnValidate()
         {
@@ -54,8 +55,11 @@ namespace PedroAurelio.TopDownShooter
             ModifyHealth(value, out reachedMax);
         }
 
-        public void DecreaseHealth(float value)
+        public void DecreaseHealth(float value, GameObject damageOrigin)
         {
+            if (_lastDamageOrigin == damageOrigin)
+                return;
+            
             ModifyHealth(value, out _);
             
             if (_currentHealth == 0f)
@@ -65,6 +69,7 @@ namespace PedroAurelio.TopDownShooter
             }
 
             _killable.Damage();
+            _lastDamageOrigin = damageOrigin;
         }
 
         private void ModifyHealth(float value, out bool max)

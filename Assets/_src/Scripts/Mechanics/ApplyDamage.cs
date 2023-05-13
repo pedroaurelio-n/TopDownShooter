@@ -4,16 +4,12 @@ namespace PedroAurelio.TopDownShooter
 {
     public class ApplyDamage : MonoBehaviour
     {
-        [Header("Settings")]
+        [Header("Damage Settings")]
         [SerializeField] private float damage;
         [SerializeField] private LayerMask damageLayers;
 
-        private float _damage;
-
-        private void Awake()
-        {
-            _damage = damage;
-        }
+        [Header("Knockback Settings")]
+        [SerializeField] private float knockbackForce;
 
         private void OnValidate()
         {
@@ -21,20 +17,21 @@ namespace PedroAurelio.TopDownShooter
                 damage = 0f;
         }
 
-        public void SetDamage(float damage)
-        {
-            _damage = damage;
-        }
-
         private void CheckForDamage(GameObject other)
         {
             var objectLayer = other.layer;
             var objectIsInDamageLayer = (1 << objectLayer & damageLayers) != 0;
 
-            if (objectIsInDamageLayer)
+            if (!objectIsInDamageLayer)
+                return;
+
+            if (other.TryGetComponent<Health>(out Health objectHealth))
+                objectHealth.DecreaseHealth(-damage, gameObject);
+
+            if (other.TryGetComponent<Movement>(out Movement targetMovement))
             {
-                if (other.TryGetComponent<Health>(out Health objectHealth))
-                    objectHealth.DecreaseHealth(-damage);
+                var direction = targetMovement.transform.position - transform.position;
+                targetMovement.ApplyKnockback(direction, knockbackForce);
             }
         }
 

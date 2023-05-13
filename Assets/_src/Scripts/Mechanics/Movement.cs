@@ -17,12 +17,18 @@ namespace PedroAurelio.TopDownShooter
 
         [Header("Knockback Settings")]
         [SerializeField, Range(0f, 3f)] private float knockbackMultiplier = 1f;
+        [SerializeField, Range(0f, 5f)] private float knockbackDecrease = 1f;
 
         private Rigidbody2D _rigidbody;
         private Vector2 _currentDirection;
+        private Vector2 _knockbackVector;
 
         private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
-        private void FixedUpdate() => Move();
+        private void FixedUpdate()
+        {
+            _knockbackVector = Vector2.MoveTowards(_knockbackVector, Vector2.zero, knockbackDecrease);
+            Move();
+        }
 
         private void Move()
         {
@@ -48,12 +54,12 @@ namespace PedroAurelio.TopDownShooter
             _rigidbody.AddForce(targetSpeed * acceleration);
 
             var clampedVelocity = Vector2.ClampMagnitude(_rigidbody.velocity, maxSpeed);
-            _rigidbody.velocity = clampedVelocity;
+            _rigidbody.velocity = clampedVelocity + _knockbackVector;
         }
 
         public void ApplyKnockback(Vector2 direction, float force)
         {
-            _rigidbody.AddForce(knockbackMultiplier * force * direction.normalized, ForceMode2D.Impulse);
+            _knockbackVector = knockbackMultiplier * force * direction.normalized;
         }
 
         public void ReflectMovement(Vector2 normal)
