@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PedroAurelio.EventSystem;
  
 namespace PedroAurelio.TopDownShooter
 {
@@ -17,6 +18,11 @@ namespace PedroAurelio.TopDownShooter
         [SerializeField] private float startDelay;
         [SerializeField] private float spawnTime;
 
+        [Header("Game Events")]
+        [SerializeField] private IntEvent incrementWaveEvent;
+
+        private int _currentWave = 0;
+
         private PossibleEnemies _possibleEnemies;
         private List<SpawnCell> _activeSpawnCells = new List<SpawnCell>();
 
@@ -30,6 +36,7 @@ namespace PedroAurelio.TopDownShooter
         
         private void Start()
         {
+            UpdateCurrentWave(0);
             _spawnCoroutine = StartCoroutine(SpawnCoroutine());
             _waitForInterval = new WaitForSeconds(spawnTime);
         }
@@ -46,18 +53,30 @@ namespace PedroAurelio.TopDownShooter
                     continue;
                 }
 
-                var enemiesToSpawn = Random.Range((int)spawnCount.x, (int)spawnCount.y + 1);
-                for (int i = 0; i < enemiesToSpawn; i++)
-                {
-                    var randomCell = _activeSpawnCells[Random.Range(0, _activeSpawnCells.Count)];
-                    var randomEnemy = _possibleEnemies.GetRandomWeightedEnemy();
-                    
-                    var enemy = Instantiate(randomEnemy, randomCell.RandomPositionInsideBounds(), Quaternion.identity, LevelDependencies.Dynamic);
-                    enemy.Target = target;
-                }
+                SpawnNextWave();
 
                 yield return _waitForInterval;
             }
+        }
+
+        private void SpawnNextWave()
+        {
+            var enemiesToSpawn = Random.Range((int)spawnCount.x, (int)spawnCount.y + 1);
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                var randomCell = _activeSpawnCells[Random.Range(0, _activeSpawnCells.Count)];
+                var randomEnemy = _possibleEnemies.GetRandomWeightedEnemy();
+                
+                var enemy = Instantiate(randomEnemy, randomCell.RandomPositionInsideBounds(), Quaternion.identity, LevelDependencies.Dynamic);
+                enemy.Target = target;
+            }
+            UpdateCurrentWave();
+        }
+
+        private void UpdateCurrentWave(int number = 1)
+        {
+            _currentWave += number;
+            incrementWaveEvent?.RaiseEvent(_currentWave);
         }
 
         public void StopSpawnCoroutine() => StopCoroutine(_spawnCoroutine);
