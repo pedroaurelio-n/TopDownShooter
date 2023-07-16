@@ -30,7 +30,7 @@ namespace PedroAurelio.TopDownShooter
 
             if (other.TryGetComponent<Movement>(out Movement targetMovement))
             {
-                var direction = targetMovement.transform.position - transform.position;
+                var direction = transform.right;
                 targetMovement.ApplyKnockback(direction, knockbackForce);
             }
         }

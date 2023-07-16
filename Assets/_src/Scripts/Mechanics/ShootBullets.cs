@@ -15,6 +15,8 @@ namespace PedroAurelio.TopDownShooter
         [Header("Settings")]
         [SerializeField, Range(0f, 360f)]private float initialRotation;
 
+        private Movement _movement;
+
         private ShootingPattern _pattern;
         private int _ammoRemaining;
 
@@ -24,6 +26,8 @@ namespace PedroAurelio.TopDownShooter
 
         private void Awake()
         {
+            _movement = GetComponentInParent<Movement>();
+
             if (spawnPosition == null)
                 spawnPosition = transform;
         }
@@ -129,6 +133,9 @@ namespace PedroAurelio.TopDownShooter
                 if (_ammoRemaining == 0)
                     ChangePattern(defaultPattern);
             }
+
+            if (_movement != null)
+                _movement.ApplyKnockback(-transform.right, _pattern.RecoilForce);
         }
 
         private void UpdateRotation()

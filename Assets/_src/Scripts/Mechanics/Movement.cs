@@ -10,14 +10,13 @@ namespace PedroAurelio.TopDownShooter
 
         [Header("Move Settings")]
         [SerializeField] private bool willAccelerate;
-        [SerializeField, Range(0f, 10f)] private float moveSpeed = 3f;
-        [SerializeField, Range(0f, 15f)] private float maxSpeed = 10f;
+        [SerializeField, Range(0f, 20f)] private float moveSpeed = 3f;
+        [SerializeField, Range(0f, 20f)] private float maxSpeed = 10f; 
         [SerializeField, Range(0f, 20f)] private float posAccel = 5f;
         [SerializeField, Range(0f, 20f)] private float negAccel = 10f;
 
         [Header("Knockback Settings")]
-        [SerializeField, Range(0f, 3f)] private float knockbackMultiplier = 1f;
-        [SerializeField, Range(0f, 5f)] private float knockbackDecrease = 1f;
+        [SerializeField, Range(0f, 10f)] private float knockbackMultiplier = 1f;
 
         private Rigidbody2D _rigidbody;
         private Vector2 _currentDirection;
@@ -26,7 +25,6 @@ namespace PedroAurelio.TopDownShooter
         private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
         private void FixedUpdate()
         {
-            _knockbackVector = Vector2.MoveTowards(_knockbackVector, Vector2.zero, knockbackDecrease);
             Move();
         }
 
@@ -35,31 +33,22 @@ namespace PedroAurelio.TopDownShooter
             if (!willAccelerate)
                 return;
 
-            Vector2 targetSpeed;
-            float acceleration;
-
             IsMoving = _currentDirection != Vector2.zero;
 
-            if (IsMoving)
-            {
-                targetSpeed = _currentDirection * moveSpeed;
-                acceleration = posAccel;
-            }
-            else
-            {
-                targetSpeed = -_rigidbody.velocity;
-                acceleration = negAccel;
-            }
+            var targetVelocity = _currentDirection * moveSpeed;
+            var acceleration = IsMoving ? posAccel : negAccel;
 
-            _rigidbody.AddForce(targetSpeed * acceleration);
-
-            var clampedVelocity = Vector2.ClampMagnitude(_rigidbody.velocity, maxSpeed);
-            _rigidbody.velocity = clampedVelocity + _knockbackVector;
+            var velocityChange = targetVelocity - _rigidbody.velocity;
+            var force = velocityChange / Time.fixedDeltaTime;
+            force *= _rigidbody.mass * acceleration;
+            _rigidbody.AddForce(force * Time.deltaTime, ForceMode2D.Force);
+            _rigidbody.velocity = Vector2.ClampMagnitude(_rigidbody.velocity, maxSpeed);
         }
 
         public void ApplyKnockback(Vector2 direction, float force)
         {
             _knockbackVector = knockbackMultiplier * force * direction.normalized;
+            _rigidbody.AddForce(_knockbackVector  * _rigidbody.mass, ForceMode2D.Impulse);
         }
 
         public void ReflectMovement(Vector2 normal)

@@ -23,6 +23,7 @@ namespace PedroAurelio.TopDownShooter
         [Header("Accuracy Settings")]
         [Range(0f, 1f)] public float MissRate;
         [Range(0f, 360f)] public float MissAngleOpening;
+        [Range(0f, 200f)] public float RecoilForce;
 
         [Header("Shot Settings")]
         public bool NeedInput;

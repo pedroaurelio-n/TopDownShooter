@@ -280,11 +280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   willAccelerate: 0
   moveSpeed: 3.5
-  maxSpeed: 4.5
+  maxSpeed: 20
   posAccel: 20
   negAccel: 20
   knockbackMultiplier: 0
-  knockbackDecrease: 1
 --- !u!114 &5745749154504473324
 MonoBehaviour:
   m_ObjectHideFlags: 0

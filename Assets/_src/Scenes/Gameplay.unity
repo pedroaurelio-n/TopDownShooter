@@ -2828,7 +2828,7 @@ RectTransform:
   - {fileID: 251682394}
   - {fileID: 1720278812}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3300,7 +3300,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454685425
 GameObject:
@@ -11263,12 +11263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willAccelerate: 1
-  moveSpeed: 2.2
-  maxSpeed: 5
-  posAccel: 10
-  negAccel: 20
+  moveSpeed: 7
+  maxSpeed: 14
+  posAccel: 5
+  negAccel: 8
   knockbackMultiplier: 1
-  knockbackDecrease: 5
 --- !u!50 &1934155041
 Rigidbody2D:
   serializedVersion: 4
@@ -11281,7 +11280,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -11448,7 +11447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 344062513779363811, guid: a4219ccd73a9cd84bbac555d6603536b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 344062513779363811, guid: a4219ccd73a9cd84bbac555d6603536b, type: 3}
       propertyPath: m_AnchorMax.x

@@ -23,6 +23,7 @@ MonoBehaviour:
   AngleOffset: 0
   MissRate: 0
   MissAngleOpening: 0
+  RecoilForce: 20
   NeedInput: 1
   IsAiming: 1
   BulletSpeed: 6.75
